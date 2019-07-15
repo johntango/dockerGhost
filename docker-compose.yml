@@ -1,0 +1,13 @@
+version: '3.7'
+services: 
+  ghost-image: 
+    build: . 
+     # The exposed 2368 port, which features the Ghost instance inside the container is mapped to our 80 port, which handles incoming http requests ports: 
+    image: ghoster
+    ports: 
+    - "80:2368" 
+     # Here we basically map the created volumes to a folder on our host machine, already containing some data, or newly created. 
+    volumes: 
+     - /var/www/ghost/content/data:/var/www/ghost/content/data 
+     - /var/www/ghost/content/apps:/var/www/ghost/content/apps 
+     - /var/www/ghost/content/images:/var/www/ghost/content/images 
